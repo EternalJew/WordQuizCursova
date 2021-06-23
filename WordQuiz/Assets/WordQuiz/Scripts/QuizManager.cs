@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class QuizManager : MonoBehaviour
     [SerializeField] private QuestionData question;
     [SerializeField] private WordData[] answerWordArray;
     [SerializeField] private WordData[] optionsWordArray;
-
+    [SerializeField] private Image questionImage;
     private char[] charArray = new char[12];
-    private int currentAnswerIndex = 0; 
+    private int currentAnswerIndex = 0;
+    private bool correctAnswer = true;
 
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class QuizManager : MonoBehaviour
 
         ResetQuestion();
 
+        questionImage.sprite = question.questionImage;
+
         for (int i = 0; i < question.answer.Length; i++)
         {
             charArray[i] = char.ToUpper(question.answer[i]);
@@ -50,10 +54,34 @@ public class QuizManager : MonoBehaviour
     }
     public void SelectedOption(WordData wordData)
     {
-        if (currentAnswerIndex >= answerWordArray.Length) return;
+        if (currentAnswerIndex >= question.answer.Length) return;
+
         answerWordArray[currentAnswerIndex].SetChar(wordData.charValue);
         wordData.gameObject.SetActive(false);
         currentAnswerIndex++;
+
+        if(currentAnswerIndex >= question.answer.Length) 
+        {
+            correctAnswer = true;
+
+            for(int i = 0; i < question.answer.Length; i++) 
+            {
+                if (char.ToUpper(question.answer[i]) != char.ToUpper(answerWordArray[i].charValue))
+                {
+                    correctAnswer = false;
+                    break;
+                }
+            }
+
+            if (correctAnswer)
+            {
+                Debug.Log("We have answered correct!");
+            }
+            else if (!correctAnswer)
+            {
+                Debug.Log("We have not answered correct!");
+            }
+        }
     }
     private void ResetQuestion()
     {
@@ -66,6 +94,12 @@ public class QuizManager : MonoBehaviour
         {
             answerWordArray[i].gameObject.SetActive(false);
         }
+    }
+    public void ResetLastWord()
+    {
+        currentAnswerIndex--;
+        answerWordArray[currentAnswerIndex].SetChar('_');
+        if (currentAnswerIndex >= question.answer.Length) return;
     }
 }
 
