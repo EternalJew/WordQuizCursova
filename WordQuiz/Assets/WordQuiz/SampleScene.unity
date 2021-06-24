@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1728112002}
         m_MethodName: ResetLastWord
         m_Mode: 1
         m_Arguments:
@@ -3073,9 +3073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5855582aae9e47d42924eea50209b8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question:
-    questionImage: {fileID: 21300000, guid: 3ca7e9dfc107e1b45ab8252046552443, type: 3}
-    answer: APPLE
+  questionData: {fileID: 11400000, guid: 536756923ebd9274aa43bd74a656d36d, type: 2}
   answerWordArray:
   - {fileID: 7365132579975426312}
   - {fileID: 3435633}

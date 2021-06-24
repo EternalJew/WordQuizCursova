@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\WordQuiz\Scripts\QuizDataScriptable.cs" />
      <Compile Include="Assets\WordQuiz\Scripts\QuizManager.cs" />
      <Compile Include="Assets\WordQuiz\Scripts\ShuffleList.cs" />
      <Compile Include="Assets\WordQuiz\Scripts\WordData.cs" />
