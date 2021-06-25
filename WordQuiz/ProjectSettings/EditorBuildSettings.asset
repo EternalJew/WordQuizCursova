@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/WordQuiz/MainMenu.unity
+    guid: 7d3a43396b328664bb3c797b8985244c
+  - enabled: 1
+    path: Assets/WordQuiz/FruitQuiz.unity
+    guid: 5f3010a3193a2024195d1194c43f08f5
+  - enabled: 1
+    path: Assets/WordQuiz/AnimalQuiz.unity
+    guid: 6763a495d7353674483e38edb88b01de
   m_configObjects: {}

@@ -58,6 +58,7 @@
      <Compile Include="Assets\WordQuiz\Scripts\QuizDataScriptable.cs" />
      <Compile Include="Assets\WordQuiz\Scripts\QuizManager.cs" />
      <Compile Include="Assets\WordQuiz\Scripts\ShuffleList.cs" />
+     <Compile Include="Assets\WordQuiz\Scripts\UI.cs" />
      <Compile Include="Assets\WordQuiz\Scripts\WordData.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

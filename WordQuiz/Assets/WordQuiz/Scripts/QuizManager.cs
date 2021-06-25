@@ -19,6 +19,10 @@ public class QuizManager : MonoBehaviour
     private int currentQuestionIndex = 0;
     private GameStatus gameStatus = GameStatus.Playing;
     private string answerWord;
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject wrongAnswer;
+    //Add score text to UI
+    private int score = 0;
 
     private void Awake()
     {
@@ -87,18 +91,24 @@ public class QuizManager : MonoBehaviour
 
             if (correctAnswer)
             {
-                Debug.Log("We have answered correct!");
-
                 gameStatus = GameStatus.Next;
+                score += 10;
 
+                Debug.Log("We have answered correct:" + score);
                 if (currentQuestionIndex < questionData.questions.Count)
                 {
                     Invoke("SetQuestion", 0.5f);
+                }
+                else
+                {
+                    gameOver.SetActive(true);
                 }
             }
             else if (!correctAnswer)
             {
                 Debug.Log("We have not answered correct!");
+                wrongAnswer.SetActive(true);
+                StartCoroutine(HideWrongAnswerText());
             }
         }
     }
@@ -129,6 +139,11 @@ public class QuizManager : MonoBehaviour
             answerWordArray[currentAnswerIndex].SetChar('_');
             Debug.Log("index: "+ index);
         }
+    }
+    private IEnumerator HideWrongAnswerText()
+    {
+        yield return new WaitForSeconds(2f);
+        wrongAnswer.SetActive(false);
     }
 }
 
